@@ -5,18 +5,34 @@
   "type": "module",
   "scripts": {
     "start": "node src/index.js",
-    "start:dev": "nodemon src/index.js"
+    "start:dev": "nodemon src/index.js",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
+    "validate": "lint-staged"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-
   "dependencies": {
     "express": "^4.18.1",
     "express-validator": "^6.14.2"
   },
-
   "devDependencies": {
-    "nodemon": "^2.0.19"
+    "@eslint/js": "^9.14.0",
+    "eslint": "^9.13.0",
+    "globals": "^15.11.0",
+    "nodemon": "^2.0.19",
+    "prettier": "^2.7.1",
+    "prettier-eslint": "^15.0.1",
+    "lint-staged": "^10.5.0",
+    "husky": "^8.0.1"
+  },
+
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   }
 }
